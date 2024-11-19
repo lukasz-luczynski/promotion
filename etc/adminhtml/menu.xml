@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Kodano::top_level" title="Kodano" module="Kodano_Promotion" sortOrder="9999" resource="Magento_Backend::content"/>
+		<add id="Kodano_Promotion::kodano_promotion_promotion" title="Promotion" module="Kodano_Promotion" sortOrder="9999" resource="Magento_Backend::content" parent="Kodano::top_level" action="kodano_promotion/promotion/index"/>
+		<add id="Kodano_Promotion::kodano_promotion_promotiongroup" title="Promotion Group" module="Kodano_Promotion" sortOrder="9999" resource="Magento_Backend::content" parent="Kodano::top_level" action="kodano_promotion/promotiongroup/index"/>
+	</menu>
+</config>

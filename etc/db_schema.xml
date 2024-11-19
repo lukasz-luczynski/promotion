@@ -1,0 +1,53 @@
+<?xml version="1.0" ?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+	<table name="kodano_promotion" engine="innodb" comment="kodano promotion able">
+		<column xsi:type="int" name="promotion_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column xsi:type="text" name="name" nullable="true" comment="name"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created at"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="promotion_id"/>
+        </constraint>
+    </table>
+	<table name="kodano_promotion_group" engine="innodb" comment="kodano promotion group table">
+		<column xsi:type="int" name="group_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Entity Id"/>
+		<column xsi:type="text" name="name" nullable="true" comment="name"/>
+        <column xsi:type="datetime" name="created_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="false" comment="Created at"/>
+        <column xsi:type="datetime" name="updated_at" nullable="false" default="CURRENT_TIMESTAMP" on_update="true" comment="Updated at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="group_id"/>
+        </constraint>
+    </table>
+    <table name="kodano_promotion_group_relation" engine="innodb" comment="Kodano promotion to group relation">
+        <column xsi:type="int" name="relation_id" padding="10" unsigned="true" nullable="false" identity="true" comment="Relation id" />
+        <column xsi:type="int" name="promotion_id" padding="10" unsigned="true" nullable="false" comment="Promotion id" />
+        <column xsi:type="int" name="group_id" padding="10" unsigned="true" nullable="false" comment="Promotion group id" />
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="relation_id"/>
+            <column name="promotion_id"/>
+            <column name="group_id"/>
+        </constraint>
+        <constraint
+            xsi:type="foreign"
+            referenceId="KPGR_PROMOTION_ID_KODANO_PROMOTION_PROMOTION_ID"
+            table="kodano_promotion_group_relation"
+            column="promotion_id"
+            referenceTable="kodano_promotion"
+            referenceColumn="promotion_id"
+            onDelete="CASCADE"
+        />
+        <constraint
+            xsi:type="foreign"
+            referenceId="KPGR_GROUP_ID_KODANO_PROMOTION_GROUP_GROUP_ID"
+            table="kodano_promotion_group_relation"
+            column="group_id"
+            referenceTable="kodano_promotion_group"
+            referenceColumn="group_id"
+            onDelete="CASCADE"
+        />
+        <constraint xsi:type="unique" referenceId="KPGR_PROMOTION_ID_PROMOTION_GROUP_ID_KEY">
+            <column name="promotion_id"/>
+            <column name="group_id"/>
+        </constraint>
+    </table>
+</schema>

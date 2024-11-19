@@ -1,0 +1,84 @@
+<?xml version="1.0" ?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">kodano_promotion_promotiongroup_listing.kodano_promotion_promotiongroup_listing_data_source</item>
+		</item>
+	</argument>
+	<settings>
+		<spinner>kodano_promotion_promotiongroup_columns</spinner>
+		<deps>
+			<dep>kodano_promotion_promotiongroup_listing.kodano_promotion_promotiongroup_listing_data_source</dep>
+		</deps>
+		<buttons>
+			<button name="add">
+				<url path="*/*/new"/>
+				<class>primary</class>
+				<label translate="true">Add new PromotionGroup</label>
+			</button>
+		</buttons>
+	</settings>
+	<dataSource name="kodano_promotion_promotiongroup_listing_data_source" component="Magento_Ui/js/grid/provider">
+		<settings>
+			<storageConfig>
+				<param name="indexField" xsi:type="string">group_id</param>
+			</storageConfig>
+			<updateUrl path="mui/index/render"/>
+		</settings>
+		<aclResource>Kodano_Promotion::PromotionGroup</aclResource>
+		<dataProvider name="kodano_promotion_promotiongroup_listing_data_source" class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+			<settings>
+				<requestFieldName>id</requestFieldName>
+				<primaryFieldName>group_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<listingToolbar name="listing_top">
+		<settings>
+			<sticky>true</sticky>
+		</settings>
+		<bookmark name="bookmarks"/>
+		<columnsControls name="columns_controls"/>
+		<filters name="listing_filters"/>
+		<paging name="listing_paging"/>
+	</listingToolbar>
+	<columns name="kodano_promotion_promotiongroup_columns">
+		<selectionsColumn name="ids">
+			<settings>
+				<indexField>group_id</indexField>
+			</settings>
+		</selectionsColumn>
+		<column name="group_id">
+			<settings>
+				<filter>text</filter>
+				<sorting>asc</sorting>
+				<label translate="true">ID</label>
+			</settings>
+		</column>
+		<column name="name">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">name</label>
+			</settings>
+		</column>
+		<column name="created_at">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">created_at</label>
+			</settings>
+		</column>
+        <column name="updated_at">
+			<settings>
+				<filter>text</filter>
+				<label translate="true">updated_at</label>
+			</settings>
+		</column>
+        <actionsColumn name="actions" class="Kodano\Promotion\Ui\Component\Listing\Column\PromotionGroupActions">
+            <settings>
+                <indexField>group_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

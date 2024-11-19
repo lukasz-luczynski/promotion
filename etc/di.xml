@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Kodano\Promotion\Api\PromotionRepositoryInterface" type="Kodano\Promotion\Model\PromotionRepository"/>
+	<preference for="Kodano\Promotion\Api\Data\PromotionInterface" type="Kodano\Promotion\Model\Promotion"/>
+	<preference for="Kodano\Promotion\Api\Data\PromotionSearchResultsInterface" type="Kodano\Promotion\Model\PromotionSearchResults"/>
+	<virtualType name="Kodano\Promotion\Model\ResourceModel\Promotion\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">kodano_promotion</argument>
+			<argument name="resourceModel" xsi:type="string">Kodano\Promotion\Model\ResourceModel\Promotion\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="kodano_promotion_promotion_listing_data_source" xsi:type="string">Kodano\Promotion\Model\ResourceModel\Promotion\Grid\Collection</item>
+				<item name="kodano_promotion_promotiongroup_listing_data_source" xsi:type="string">Kodano\Promotion\Model\ResourceModel\PromotionGroup\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<preference for="Kodano\Promotion\Api\PromotionGroupRepositoryInterface" type="Kodano\Promotion\Model\PromotionGroupRepository"/>
+	<preference for="Kodano\Promotion\Api\Data\PromotionGroupInterface" type="Kodano\Promotion\Model\PromotionGroup"/>
+	<preference for="Kodano\Promotion\Api\Data\PromotionGroupSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Kodano\Promotion\Model\ResourceModel\PromotionGroup\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">kodano_promotion_group</argument>
+			<argument name="resourceModel" xsi:type="string">Kodano\Promotion\Model\ResourceModel\PromotionGroup\Collection</argument>
+		</arguments>
+	</virtualType>
+    <preference for="Kodano\Promotion\Api\PromotionGroupRelationRepositoryInterface" type="Kodano\Promotion\Model\PromotionGroupRelationRepository"/>
+    <preference for="Kodano\Promotion\Api\Data\PromotionGroupRelationInterface" type="Kodano\Promotion\Model\PromotionGroupRelation"/>
+</config>

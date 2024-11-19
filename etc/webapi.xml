@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Webapi:etc/webapi.xsd">
+	<route url="/V1/kodano-promotion/promotion" method="POST">
+		<service class="Kodano\Promotion\Api\PromotionRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Kodano_Promotion::Promotion_save"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotion/search" method="GET">
+		<service class="Kodano\Promotion\Api\PromotionRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Kodano_Promotion::Promotion_view"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotion/:promotionId" method="GET">
+		<service class="Kodano\Promotion\Api\PromotionRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Kodano_Promotion::Promotion_view"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotion/:promotionId" method="PUT">
+		<service class="Kodano\Promotion\Api\PromotionRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Kodano_Promotion::Promotion_update"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotion/:promotionId" method="DELETE">
+		<service class="Kodano\Promotion\Api\PromotionRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Kodano_Promotion::Promotion_delete"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotiongroup" method="POST">
+		<service class="Kodano\Promotion\Api\PromotionGroupRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Kodano_Promotion::PromotionGroup_save"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotiongroup/search" method="GET">
+		<service class="Kodano\Promotion\Api\PromotionGroupRepositoryInterface" method="getList"/>
+		<resources>
+			<resource ref="Kodano_Promotion::PromotionGroup_view"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotiongroup/:promotiongroupId" method="GET">
+		<service class="Kodano\Promotion\Api\PromotionGroupRepositoryInterface" method="get"/>
+		<resources>
+			<resource ref="Kodano_Promotion::PromotionGroup_view"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotiongroup/:promotiongroupId" method="PUT">
+		<service class="Kodano\Promotion\Api\PromotionGroupRepositoryInterface" method="save"/>
+		<resources>
+			<resource ref="Kodano_Promotion::PromotionGroup_update"/>
+		</resources>
+	</route>
+	<route url="/V1/kodano-promotion/promotiongroup/:promotiongroupId" method="DELETE">
+		<service class="Kodano\Promotion\Api\PromotionGroupRepositoryInterface" method="deleteById"/>
+		<resources>
+			<resource ref="Kodano_Promotion::PromotionGroup_delete"/>
+		</resources>
+	</route>
+</routes>
